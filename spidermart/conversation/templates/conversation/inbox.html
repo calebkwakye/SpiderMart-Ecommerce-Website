@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Inbox{% endblock %}
+
+{% block content %}
+<div class="inbox-container" style="min-height: calc(100vh - 120px);">
+    <div class="bg-gradient-to-br from-green-500 to-blue-500 p-6 rounded-xl mb-6 pb-2 pt-3">
+        <h1 class="mb-2 text-3xl text-black-600">Inbox</h1>
+    </div>
+
+    <div class="space-y-6 w-full my-6 mx-auto p-6 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl"> 
+        {% if conversations %}
+            {% for conversation in conversations %}
+            <div>
+                <a href="{% url 'conversation:detail' conversation.id %}">
+                    <div class="p-6 flex {% if message.created_by == request.user %}bg-blue-100{% else %}bg-gray-100{% endif %} rounded-xl">
+                        <div class="pr-6">
+                            <img src="{{ conversation.item.image.url }}" class="w-20 rounded-xl" alt="">
+                        </div>
+
+                        <div>
+                            {% for member in conversation.members.all %}
+                                {% if member != request.user %}
+                                    <p class="mb-4"><strong>{{ member.username }}</strong> | {{ conversation.modified_at }} </p>
+                                    <p>{{ conversation.item.name }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            {% endfor %}
+        {% else %}
+            <!-- Container for the default message -->
+            <div class="message-container flex flex-col items-center justify-center h-64">
+                <p class="text-2xl text-black">Your Messages Appear Here</p>
+                <p>No messages yet.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
