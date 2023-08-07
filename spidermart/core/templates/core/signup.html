@@ -1,12 +1,9 @@
 {% extends 'core/base.html' %}
 
-
 {% block title %}Sign Up {% endblock %}
 
-
 {% block content %}
-
-<div class="w-1/2 my-6 mx-auto p-6 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl">
+<div class="w-full sm:w-3/4 md:w-1/2 lg:w-2/3 xl:w-2/4 my-6 mx-auto p-6 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl">
     <h1 class="mb-6 text-3xl text-center text-black">Sign Up</h1>
 
     <form method="post" action=".">
@@ -39,13 +36,12 @@
             {% endfor %}
 
             {{ form.non_field_errors }}
-
         </div>
         {% endif %}
+
         <div class="flex justify-center">
             <button class="py-4 px-8 text-lg bg-white hover:bg-green-400 rounded-xl text-black-600 font-semibold">Submit</button>
         </div>
     </form>
 </div>
-
 {% endblock %}
