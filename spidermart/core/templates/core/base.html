@@ -29,28 +29,31 @@
 
 <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
     <nav class="py-4 sm:py-6 px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center border-b border-black-500">
-        <a href="/" class="mb-4 sm:mb-0 text-3xl sm:text-4xl branding">
+        <a href="/" class="mb-4 sm:mb-0 text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-4xl branding">
             <i class="fas fa-shopping-cart mr-2"></i>
             SpiderMart 🕷️
         </a>
+        
     
         <!-- Main Navigation Links -->
         <div class="mb-4 sm:mb-0 space-y-2 sm:space-y-0 sm:space-x-6 flex flex-col sm:flex-row">
-            <a href="{% url 'item:new' %}" class="text-lg hover:text-green-700 link-style">Add Product</a>
-            <a href="{% url 'item:items' %}#" class="text-lg hover:text-green-700 link-style">Browse Collection</a>
+            <a href="{% url 'item:new' %}" class="text-sm sm:text-md md:text-lg hover:text-green-700 link-style">Add Product</a>
+            <a href="{% url 'item:items' %}#" class="text-sm sm:text-md md:text-lg hover:text-green-700 link-style">Browse Collection</a>
         </div>
+        
     
         <!-- Authentication Links/Buttons -->
         <div class="space-y-2 sm:space-y-0 sm:space-x-6 flex flex-col sm:flex-row">
             {% if request.user.is_authenticated %}
-            <a href="{% url 'conversation:inbox' %}" class="mb-2 sm:mb-0 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 cta">My Inbox</a>
-            <a href="{% url 'dashboard:index' %}" class="mb-2 sm:mb-0 px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700 cta">My Dashboard</a>
-            <a href="{% url 'logout' %}" class="px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-red-700 cta">Logout</a>
+            <a href="{% url 'conversation:inbox' %}" class="mb-2 sm:mb-0 px-6 py-3 text-sm sm:text-md md:text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 cta">My Inbox</a>
+            <a href="{% url 'dashboard:index' %}" class="mb-2 sm:mb-0 px-6 py-3 text-sm sm:text-md md:text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700 cta">My Dashboard</a>
+            <a href="{% url 'logout' %}" class="px-6 py-3 text-sm sm:text-md md:text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-red-700 cta">Logout</a>
             {% else %}
-            <a href="{% url 'core:signup' %}" class="mb-2 sm:mb-0 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 cta">Sign Up</a>
-            <a href="{% url 'core:login' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700 cta">Log In</a>
+            <a href="{% url 'core:signup' %}" class="mb-2 sm:mb-0 px-6 py-3 text-sm sm:text-md md:text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 cta">Sign Up</a>
+            <a href="{% url 'core:login' %}" class="px-6 py-3 text-sm sm:text-md md:text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700 cta">Log In</a>
             {% endif %}
         </div>
+        
     </nav>
     
     <div class="px-6 py-6">
